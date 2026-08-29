@@ -1,0 +1,44 @@
+name: Developer Genome Daily Workflow
+
+on:
+  schedule:
+    - cron: '30 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  collect-and-publish:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_USERNAME: Saiyatin26
+      GITHUB_OWNER: Saiyatin26
+      GITHUB_ANALYTICS_REPO: developer-genome
+      TIMEZONE: Asia/Kolkata
+      GH_TOKEN: ${{ secrets.GH_PAT || github.token }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run tests
+        run: python -m unittest backend/test_github_pipeline.py backend/test_dates.py
+
+      - name: Generate daily analytics snapshot
+        run: python backend/analytics_engine.py --username "$GITHUB_USERNAME"
+
+      - name: Commit generated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backend/data/analytics_snapshot.json dashboard/data.json
+          if git diff --cached --quiet; then echo "No generated changes to commit."; else git commit -m "chore: update developer genome analytics"; fi
+
+      - name: Push updates
+        run: git push

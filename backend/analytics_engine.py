@@ -8,11 +8,17 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib import error, request
 
+from config import get_target_date_for_run
+from report import build_daily_markdown
+from storage import write_daily_snapshot, write_json, write_report
+
 ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
 INPUT_PATH = DATA_DIR / "sample_activity.json"
 OUTPUT_PATH = DATA_DIR / "analytics_snapshot.json"
-DEFAULT_USERNAME = "Saiyatin26"
+DASHBOARD_PATH = ROOT.parent / "dashboard" / "data.json"
+DEFAULT_USERNAME = os.getenv("GITHUB_USERNAME", "your_github_username")
+TIMEZONE_NAME = os.getenv("TIMEZONE", "Asia/Kolkata")
 
 
 def safe_float(value, default=0):
@@ -45,6 +51,23 @@ def github_request(url, token: str | None = None):
 
 def get_github_token():
     return os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN") or None
+
+
+def get_target_date_for_run(now_utc: datetime | None = None, timezone_name: str = TIMEZONE_NAME):
+    """Return the previous calendar date in the configured business timezone."""
+    tz = datetime.now(timezone.utc).astimezone() if False else None
+    # Use zoneinfo when available to apply the configured timezone and target yesterday.
+    try:
+        from zoneinfo import ZoneInfo
+        if now_utc is None:
+            now_utc = datetime.now(timezone.utc)
+        tzinfo = ZoneInfo(timezone_name)
+        now_local = now_utc.astimezone(tzinfo)
+        return (now_local - timedelta(days=1)).date()
+    except Exception:
+        if now_utc is None:
+            now_utc = datetime.now(timezone.utc)
+        return (now_utc.date() - timedelta(days=1))
 
 
 def fetch_repo_commit_count(username: str, repo_name: str):
@@ -127,14 +150,15 @@ def fetch_live_github_profile(username: str):
                 "total_commits": sum(int(r.get("commit_count", r.get("commits", 0))) for r in normalized_repos),
                 "pull_requests": sum(int(r.get("pull_requests", 0)) for r in normalized_repos),
                 "issues_closed": sum(int(r.get("issues", 0)) for r in normalized_repos),
-                "streak_days": min(90, max(7, len(normalized_repos) * 3)),
-                "active_days": 120,
-                "core_repo_ratio": 0.52,
+                "streak_days": 0,
+                "active_days": 0,
+                "core_repo_ratio": 0,
             },
             "repositories": normalized_repos,
             "events": events,
         }
-    except (error.URLError, ValueError, KeyError):
+    except (error.URLError, ValueError, KeyError) as exc:
+        print(f"GitHub collection failed for {username}: {exc}", flush=True)
         return None
 
 
@@ -379,8 +403,11 @@ def build_history(repos, events=None):
     return base
 
 
-def build_snapshot(username: str | None = None, use_live_data: bool = True):
-    username = username or DEFAULT_USERNAME
+def build_snapshot(username: str | None = None, use_live_data: bool = True, target_date: datetime.date | None = None):
+    username = username or os.getenv("GITHUB_USERNAME") or DEFAULT_USERNAME
+    if username in {"your_github_username", ""}:
+        raise ValueError("Set GITHUB_USERNAME in the environment before running analytics.")
+
     raw_data = None
     events = []
 
@@ -389,6 +416,8 @@ def build_snapshot(username: str | None = None, use_live_data: bool = True):
         if live_data:
             raw_data = live_data
             events = live_data.get("events", [])
+        else:
+            raise RuntimeError(f"Live GitHub collection failed for {username}. No sample data will be used in production.")
 
     if raw_data is None:
         raw_data = json.loads(INPUT_PATH.read_text(encoding="utf-8"))
@@ -410,6 +439,8 @@ def build_snapshot(username: str | None = None, use_live_data: bool = True):
                 "last_commit": repo.get("last_commit"),
                 "technologies": repo.get("technologies", []),
                 "html_url": repo.get("html_url"),
+                "private": bool(repo.get("private", False)),
+                "commit_count": repo.get("commit_count", repo.get("commits", 0)),
             }
         )
 
@@ -420,6 +451,21 @@ def build_snapshot(username: str | None = None, use_live_data: bool = True):
     monthly_history = build_monthly_history(events, months=6)
     today_activity = build_repo_activity_for_day(events, datetime.now(timezone.utc).date())
     repo_push_summary = build_repo_push_summary(events)
+    target_date = target_date or get_target_date_for_run()
+    daily_summary = {
+        "date": target_date.isoformat(),
+        "timezone": "Asia/Kolkata",
+        "summary": {
+            "commits": sum(item.get("commits", 0) for item in build_repo_activity_for_day(events, target_date) or []),
+            "repositories_touched": len({item.get("repo") for item in build_repo_activity_for_day(events, target_date) if item.get("repo")}),
+            "pull_requests": sum(item.get("pull_requests", 0) for item in build_repo_activity_for_day(events, target_date) or []),
+            "issues": sum(item.get("issues_closed", 0) for item in build_repo_activity_for_day(events, target_date) or []),
+        },
+        "repositories": [
+            {"name": item.get("repo"), "commits": item.get("commits", 0), "push_events_observed": item.get("pushes", 0)}
+            for item in build_repo_activity_for_day(events, target_date)
+        ],
+    }
 
     snapshot = {
         "developer": {
@@ -460,15 +506,24 @@ def build_snapshot(username: str | None = None, use_live_data: bool = True):
     }
 
     OUTPUT_PATH.write_text(json.dumps(snapshot, indent=2), encoding="utf-8")
+    write_json(DASHBOARD_PATH, snapshot)
+    markdown = build_daily_markdown(target_date.isoformat(), daily_summary["summary"], daily_summary["repositories"])
+    write_report(target_date.isoformat(), markdown)
+    write_daily_snapshot(target_date.isoformat(), daily_summary)
     return snapshot
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Generate Developer Genome analytics from a GitHub profile.")
-    parser.add_argument("--username", default=DEFAULT_USERNAME, help="GitHub username to fetch from")
-    parser.add_argument("--offline", action="store_true", help="Use the sample data instead of the live GitHub API")
+    parser.add_argument("--username", default=os.getenv("GITHUB_USERNAME") or DEFAULT_USERNAME, help="GitHub username to fetch from")
+    parser.add_argument("--offline", action="store_true", help="Use sample data only for fixtures/tests")
+    parser.add_argument("--target-date", type=str, help="Override target date in YYYY-MM-DD format")
     args = parser.parse_args()
 
-    snapshot = build_snapshot(username=args.username, use_live_data=not args.offline)
-    print(f"Generated snapshot for {args.username} with overall score {snapshot['summary']['overall_score']}")
-    print(f"Output: {OUTPUT_PATH}")
+    try:
+        snapshot = build_snapshot(username=args.username, use_live_data=not args.offline)
+        print(f"Generated snapshot for {args.username} with overall score {snapshot['summary']['overall_score']}")
+        print(f"Output: {OUTPUT_PATH}")
+    except Exception as exc:
+        print(f"ERROR: {exc}", flush=True)
+        raise SystemExit(1)
