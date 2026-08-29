@@ -1,0 +1,19 @@
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated data
+backend/data/*.json
+!backend/data/sample_activity.json
+!backend/data/analytics_snapshot.json

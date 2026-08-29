@@ -1,0 +1,131 @@
+{
+  "developer": {
+    "name": "Alex Morgan",
+    "handle": "@alexmorgan",
+    "location": "Remote",
+    "bio": "Full-stack engineer focused on platforms, product analytics, and AI workflows."
+  },
+  "contributions": {
+    "active_repositories": 8,
+    "total_commits": 286,
+    "pull_requests": 42,
+    "issues_closed": 19,
+    "streak_days": 24,
+    "active_days": 128,
+    "core_repo_ratio": 0.48
+  },
+  "repositories": [
+    {
+      "name": "developer-genome",
+      "description": "Developer analytics and identity platform.",
+      "primary_language": "TypeScript",
+      "languages": ["typescript", "python", "yaml"],
+      "commits": 68,
+      "pull_requests": 12,
+      "issues": 6,
+      "stars": 54,
+      "days_since_last_activity": 3,
+      "last_commit": "2026-08-22",
+      "weight": 1.7,
+      "technologies": ["React", "Node.js", "Python", "Docker"]
+    },
+    {
+      "name": "signal-mesh",
+      "description": "Event-driven microservice platform for telemetry pipelines.",
+      "primary_language": "Go",
+      "languages": ["go", "sql", "yaml"],
+      "commits": 49,
+      "pull_requests": 9,
+      "issues": 4,
+      "stars": 38,
+      "days_since_last_activity": 5,
+      "last_commit": "2026-08-20",
+      "weight": 1.6,
+      "technologies": ["Go", "Kafka", "Postgres", "Kubernetes"]
+    },
+    {
+      "name": "query-graph",
+      "description": "Graph-based business intelligence toolkit.",
+      "primary_language": "Python",
+      "languages": ["python", "sql", "javascript"],
+      "commits": 52,
+      "pull_requests": 8,
+      "issues": 5,
+      "stars": 42,
+      "days_since_last_activity": 7,
+      "last_commit": "2026-08-19",
+      "weight": 1.5,
+      "technologies": ["Python", "Pandas", "DuckDB", "FastAPI"]
+    },
+    {
+      "name": "atlas-ui",
+      "description": "Design system and product UI library.",
+      "primary_language": "TypeScript",
+      "languages": ["typescript", "css", "javascript"],
+      "commits": 44,
+      "pull_requests": 7,
+      "issues": 3,
+      "stars": 31,
+      "days_since_last_activity": 9,
+      "last_commit": "2026-08-14",
+      "weight": 1.4,
+      "technologies": ["React", "TypeScript", "Storybook", "Figma"]
+    },
+    {
+      "name": "ml-orchestration",
+      "description": "Workflow automation for model experiments and feature pipelines.",
+      "primary_language": "Python",
+      "languages": ["python", "yaml", "dockerfile"],
+      "commits": 29,
+      "pull_requests": 4,
+      "issues": 2,
+      "stars": 23,
+      "days_since_last_activity": 14,
+      "last_commit": "2026-08-07",
+      "weight": 1.3,
+      "technologies": ["Python", "Docker", "Airflow", "MLflow"]
+    },
+    {
+      "name": "ops-playbooks",
+      "description": "Infrastructure automation and deployment runbooks.",
+      "primary_language": "Bash",
+      "languages": ["bash", "yaml", "dockerfile"],
+      "commits": 21,
+      "pull_requests": 5,
+      "issues": 2,
+      "stars": 26,
+      "days_since_last_activity": 11,
+      "last_commit": "2026-08-12",
+      "weight": 1.2,
+      "technologies": ["Bash", "Terraform", "Docker", "GitHub Actions"]
+    },
+    {
+      "name": "algorithms-lab",
+      "description": "Performance-sensitive algorithm research and benchmarking.",
+      "primary_language": "Rust",
+      "languages": ["rust", "python"],
+      "commits": 18,
+      "pull_requests": 3,
+      "issues": 1,
+      "stars": 19,
+      "days_since_last_activity": 16,
+      "last_commit": "2026-08-05",
+      "weight": 1.1,
+      "technologies": ["Rust", "Data structures", "Benchmarking"]
+    },
+    {
+      "name": "docs-archive",
+      "description": "Technical writing and architecture documentation.",
+      "primary_language": "Markdown",
+      "languages": ["markdown", "yaml"],
+      "commits": 13,
+      "pull_requests": 2,
+      "issues": 1,
+      "stars": 11,
+      "days_since_last_activity": 22,
+      "last_commit": "2026-07-30",
+      "weight": 0.9,
+      "technologies": ["Docs", "Architecture", "Notion"]
+    }
+  ]
+}

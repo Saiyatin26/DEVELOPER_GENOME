@@ -1,0 +1,491 @@
+{
+  "developer": {
+    "name": "Sai yatin",
+    "handle": "@Saiyatin26",
+    "location": "Vellore,Tamil Nadu",
+    "headline": "Developer building software, automation, and product-focused engineering systems."
+  },
+  "summary": {
+    "active_repositories": 7,
+    "total_commits": 45,
+    "pull_requests": 0,
+    "issues_closed": 0,
+    "current_streak": 21,
+    "overall_score": 59.7
+  },
+  "technical_dna": {
+    "Backend": 62.3,
+    "Frontend": 37.1,
+    "Data": 58.3,
+    "Algorithms": 58.4,
+    "DevOps": 24.0
+  },
+  "behavioral_dna": {
+    "Consistency": 80.0,
+    "Exploration": 76.2,
+    "Focus": 64.0,
+    "Persistence": 65.0
+  },
+  "history": [
+    {
+      "period": "Mar",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "Apr",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "May",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "Jun",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "Jul",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 1
+    },
+    {
+      "period": "Aug",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 3
+    }
+  ],
+  "monthly_history": [
+    {
+      "period": "Mar",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "Apr",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "May",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "Jun",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 0
+    },
+    {
+      "period": "Jul",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 1
+    },
+    {
+      "period": "Aug",
+      "score": 55.0,
+      "commits": 0,
+      "pr_count": 0,
+      "repo_count": 3
+    }
+  ],
+  "daily_activity": [
+    {
+      "date": "2026-07-30",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-07-31",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-01",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-02",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 5
+    },
+    {
+      "date": "2026-08-03",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 2
+    },
+    {
+      "date": "2026-08-04",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-05",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-06",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 2
+    },
+    {
+      "date": "2026-08-07",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-08",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-09",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-10",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-11",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-12",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-13",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-14",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-15",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-16",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-17",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 1
+    },
+    {
+      "date": "2026-08-18",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 2
+    },
+    {
+      "date": "2026-08-19",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 2
+    },
+    {
+      "date": "2026-08-20",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 4
+    },
+    {
+      "date": "2026-08-21",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 4
+    },
+    {
+      "date": "2026-08-22",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-23",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 3
+    },
+    {
+      "date": "2026-08-24",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 1
+    },
+    {
+      "date": "2026-08-25",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-26",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 0
+    },
+    {
+      "date": "2026-08-27",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 1
+    },
+    {
+      "date": "2026-08-28",
+      "commits": 0,
+      "pull_requests": 0,
+      "issues_closed": 0,
+      "pushes": 2
+    }
+  ],
+  "today_activity": [],
+  "repo_push_summary": [
+    {
+      "repo": "Saiyatin26/neetcode-submissions",
+      "commits": 0,
+      "pushes": 23,
+      "last_event": "2026-08-02T18:22:43Z"
+    },
+    {
+      "repo": "harshit-git404/sahi-daam",
+      "commits": 0,
+      "pushes": 6,
+      "last_event": "2026-08-19T13:54:40Z"
+    }
+  ],
+  "repositories": [
+    {
+      "name": "DEVELOPER_GENOME",
+      "description": "Public repository",
+      "language": "Markdown",
+      "stars": 0,
+      "health": 42.9,
+      "days_since_last_activity": 0,
+      "last_commit": "2026-08-29",
+      "technologies": [
+        "GitHub",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/DEVELOPER_GENOME"
+    },
+    {
+      "name": "neetcode-submissions",
+      "description": "My NeetCode.io problem submissions",
+      "language": "C++",
+      "stars": 0,
+      "health": 71.7,
+      "days_since_last_activity": 0,
+      "last_commit": "2026-08-28",
+      "technologies": [
+        "C++",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/neetcode-submissions"
+    },
+    {
+      "name": "Saiyatin26",
+      "description": "AI Engineer | GenAI | Machine Learning | Building Intelligent Systems",
+      "language": "Markdown",
+      "stars": 0,
+      "health": 25,
+      "days_since_last_activity": 64,
+      "last_commit": "2026-06-25",
+      "technologies": [
+        "GitHub",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/Saiyatin26"
+    },
+    {
+      "name": "android-trace-analyzer",
+      "description": "Public repository",
+      "language": "Python",
+      "stars": 0,
+      "health": 25,
+      "days_since_last_activity": 100,
+      "last_commit": "2026-05-21",
+      "technologies": [
+        "Python",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/android-trace-analyzer"
+    },
+    {
+      "name": "SmartCare",
+      "description": "Public repository",
+      "language": "JavaScript",
+      "stars": 0,
+      "health": 25,
+      "days_since_last_activity": 145,
+      "last_commit": "2026-04-06",
+      "technologies": [
+        "JavaScript",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/SmartCare"
+    },
+    {
+      "name": "personalized-lightgnn",
+      "description": "Public repository",
+      "language": "Python",
+      "stars": 0,
+      "health": 25,
+      "days_since_last_activity": 191,
+      "last_commit": "2026-02-18",
+      "technologies": [
+        "Python",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/personalized-lightgnn"
+    },
+    {
+      "name": "Patent-Abc",
+      "description": "Public repository",
+      "language": "Python",
+      "stars": 1,
+      "health": 25,
+      "days_since_last_activity": 202,
+      "last_commit": "2026-02-07",
+      "technologies": [
+        "Python",
+        "Code",
+        "Automation"
+      ],
+      "html_url": "https://github.com/Saiyatin26/Patent-Abc"
+    }
+  ],
+  "technology_mix": [
+    {
+      "name": "Python",
+      "value": 32
+    },
+    {
+      "name": "TypeScript",
+      "value": 24
+    },
+    {
+      "name": "Go",
+      "value": 18
+    },
+    {
+      "name": "SQL",
+      "value": 15
+    },
+    {
+      "name": "Docker",
+      "value": 11
+    }
+  ],
+  "milestones": [
+    {
+      "title": "Profile sync",
+      "date": "2026-08-29",
+      "detail": "GitHub sync collected live data for Saiyatin26."
+    },
+    {
+      "title": "Monthly trend review",
+      "date": "2026-07-30",
+      "detail": "Tracked the recent engineering velocity and pull request activity."
+    },
+    {
+      "title": "Daily commit health",
+      "date": "2026-08-29",
+      "detail": "Monitored live push activity and repository momentum."
+    }
+  ],
+  "generated_at": "2026-08-29T07:45:44.118922Z"
+}

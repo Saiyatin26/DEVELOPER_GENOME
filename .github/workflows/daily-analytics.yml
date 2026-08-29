@@ -1,0 +1,37 @@
+name: Developer Genome Daily Analytics
+
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GH_PAT || github.token }}
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GH_PAT || github.token }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Generate analytics snapshot
+        run: |
+          python backend/analytics_engine.py --username Saiyatin26
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backend/data/analytics_snapshot.json
+          if git diff --cached --quiet; then echo "No snapshot changes to commit."; else git commit -m "chore: refresh developer genome snapshot"; fi
+
+      - name: Push changes
+        run: git push

@@ -1,0 +1,62 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2754 >>
+stream
+BT /F1 12 Tf 1 0 0 1 72 720 Td (Developer Genome Project Analysis) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 702 Td () Tj ET
+BT /F1 12 Tf 1 0 0 1 72 684 Td (Project overview:) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 666 Td (Developer Genome is a full-stack developer analytics platform that turns GitHub activity into) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 648 Td (an evolving technical and behavioral profile. The system collects repository signals, computes) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 630 Td (DNA scores, tracks historical trends, and presents the results in an interactive dashboard.) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 612 Td () Tj ET
+BT /F1 12 Tf 1 0 0 1 72 594 Td (Core capabilities:) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 576 Td (- GitHub-inspired data model and activity aggregation) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 558 Td (- Python analytics engine for technical and behavioral scoring) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 540 Td (- Historical trend snapshots for milestone tracking) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 522 Td (- Responsive dashboard with radar charts, score evolution, repo health, and technology mix) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 504 Td (- GitHub Actions automation for recurring refreshes) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 486 Td (- Public-ready frontend architecture for deployment to Vercel or Netlify) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 468 Td () Tj ET
+BT /F1 12 Tf 1 0 0 1 72 450 Td (Current implementation status:) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 432 Td (- Backend analytics engine is built and generates a sample snapshot) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 414 Td (- Dashboard frontend is implemented in React + Vite with polished dark/light styling) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 396 Td (- Sample analytics data is committed in backend/data/analytics_snapshot.json) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 378 Td (- Daily automation workflow is prepared under .github/workflows) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 360 Td () Tj ET
+BT /F1 12 Tf 1 0 0 1 72 342 Td (Verified results:) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 324 Td (- Python analytics snapshot generation succeeded) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 306 Td (- Frontend production build succeeded with Vite) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 288 Td (- Overall score in the generated sample dataset: 61.7) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 270 Td (- Technical DNA highlights: Backend 58.0, Data 54.0, Frontend 42.7) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 252 Td (- Behavioral DNA highlights: Consistency 84.0, Exploration 85.0) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 234 Td () Tj ET
+BT /F1 12 Tf 1 0 0 1 72 216 Td (Recommendation:) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 198 Td (Integrate the real GitHub API and add per-user authentication, persistent storage, and AI insight) Tj ET
+BT /F1 12 Tf 1 0 0 1 72 180 Td (generation to scale this into a production-grade public product.) Tj ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000003047 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+3117
+%%EOF
