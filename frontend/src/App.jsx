@@ -375,7 +375,7 @@ function App() {
               <main className="dashboard">
                 <section className="card chart-card">
                   <h3>Methodology</h3>
-                  <p className="lead-sm">This dashboard consumes generated public-safe data produced by the GitHub Actions pipeline. The workflow runs daily at 08:00 IST, targets the previous calendar date, and analyzes actual developer activity from the GitHub API.</p>
+                  <p className="lead-sm">This dashboard consumes generated public-safe data produced by the GitHub Actions pipeline. The workflow runs daily at 12:25 IST, targets the previous calendar date, and analyzes actual developer activity from the GitHub API.</p>
                   <ul className="method-list">
                     <li>Timezone: Asia/Kolkata; the reporting window is the full previous day from 00:00:00 to 23:59:59.999999 IST.</li>
                     <li>Commit collection uses since/until filters and author filtering; it does not count automation activity.</li>

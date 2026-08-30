@@ -59,7 +59,7 @@ Use a personal access token with repository access if you need private repo visi
 
 ## Workflow behavior
 
-The daily GitHub Actions job runs at 02:30 UTC, which is 08:00 IST. It analyzes the previous calendar day and updates the snapshot if data changed.
+The daily GitHub Actions job runs at 06:45 UTC, which is 12:25 IST. It analyzes the previous calendar day and updates the snapshot if data changed.
 
 ## Testing
 

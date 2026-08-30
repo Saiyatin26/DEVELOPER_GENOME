@@ -2,7 +2,7 @@ name: Developer Genome Daily Analytics
 
 on:
   schedule:
-    - cron: '30 2 * * *'
+    - cron: '55 6 * * *'
   workflow_dispatch:
 
 permissions:
