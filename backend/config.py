@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 
 try:
     from zoneinfo import ZoneInfo
-except ImportError:  # pragma: no cover - fallback when tzdata is unavailable
+except ImportError:  # pragma: no cover
     ZoneInfo = None
 
 DEFAULT_TIMEZONE = "Asia/Kolkata"
@@ -14,11 +14,11 @@ TIMEZONE_OFFSETS = {
 
 def get_config():
     return {
-        "github_username": os.getenv("GITHUB_USERNAME", "your_github_username"),
-        "github_owner": os.getenv("GITHUB_OWNER", os.getenv("GITHUB_USERNAME", "your_github_username")),
+        "github_username": os.getenv("GITHUB_USERNAME"),
+        "github_owner": os.getenv("GITHUB_OWNER") or os.getenv("GITHUB_USERNAME"),
         "analytics_repo": os.getenv("GITHUB_ANALYTICS_REPO", "developer-genome"),
         "timezone": os.getenv("TIMEZONE", DEFAULT_TIMEZONE),
-        "lookback_days": int(os.getenv("LOOKBACK_DAYS", "30")),
+        "lookback_days": int(os.getenv("LOOKBACK_DAYS", "90")),
         "system_bot_actor": os.getenv("SYSTEM_BOT_ACTOR", "github-actions[bot]"),
         "token": os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN"),
     }
@@ -49,5 +49,5 @@ def get_daily_window(target_date, timezone_name: str | None = None):
     tz_name = timezone_name or get_config()["timezone"]
     offset = get_timezone_offset(tz_name)
     start_local = datetime.combine(target_date, datetime.min.time()) + offset
-    end_local = datetime.combine(target_date, datetime.max.time().replace(microsecond=0)) + offset
+    end_local = datetime.combine(target_date, datetime.max.time().replace(microsecond=999999)) + offset
     return start_local.astimezone(timezone.utc), end_local.astimezone(timezone.utc)

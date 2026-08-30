@@ -1,0 +1,29 @@
+{
+  "categories": {
+    "Backend": ["python", "java", "go", "csharp", "ruby", "php", "rust", "nodejs", "typescript", "javascript", "kotlin", "scala", "swift"],
+    "Frontend": ["javascript", "typescript", "jsx", "tsx", "react", "vue", "svelte", "css", "html"],
+    "Data": ["sql", "python", "r", "jupyter", "pandas", "numpy", "spark", "scala", "postgresql", "mysql"],
+    "Algorithms": ["c++", "rust", "python", "java", "go", "matlab"],
+    "DevOps": ["docker", "yaml", "bash", "shell", "terraform", "kubernetes", "ansible", "github actions", "makefile"]
+  },
+  "technology_indicators": {
+    "react": "Frontend",
+    "vite": "Frontend",
+    "docker": "DevOps",
+    "github actions": "DevOps",
+    "pytest": "Backend",
+    "pandas": "Data",
+    "postgresql": "Data",
+    "sql": "Data",
+    "python": "Backend",
+    "node": "Backend",
+    "typescript": "Frontend",
+    "javascript": "Frontend",
+    "bash": "DevOps",
+    "terraform": "DevOps",
+    "kubernetes": "DevOps",
+    "rust": "Algorithms",
+    "java": "Backend",
+    "go": "Backend"
+  }
+}

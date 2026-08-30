@@ -1,5 +1,6 @@
 import json
 from urllib import error, request
+from urllib.parse import urlencode
 
 
 class GitHubClient:
@@ -14,17 +15,19 @@ class GitHubClient:
         return headers
 
     def request(self, url: str, params: dict | None = None):
+        full_url = url
         if params:
-            query = "&".join(f"{key}={value}" for key, value in params.items())
-            url = f"{url}?{query}"
-        req = request.Request(url, headers=self._headers())
+            full_url = f"{url}?{urlencode(params)}"
+        req = request.Request(full_url, headers=self._headers())
         try:
             with request.urlopen(req, timeout=30) as response:
-                body = response.read().decode("utf-8")
-                return json.loads(body)
+                payload = response.read().decode("utf-8")
+                return json.loads(payload)
         except error.HTTPError as exc:
-            payload = exc.read().decode("utf-8", errors="ignore")
-            raise RuntimeError(f"GitHub API request failed for {url}: {payload}") from exc
+            body = exc.read().decode("utf-8", errors="ignore")
+            raise RuntimeError(f"GitHub API request failed for {full_url}: {body}") from exc
+        except error.URLError as exc:
+            raise RuntimeError(f"GitHub API network failure for {full_url}: {exc}") from exc
 
     def get_user(self, username: str):
         return self.request(f"https://api.github.com/users/{username}")
@@ -35,10 +38,18 @@ class GitHubClient:
     def list_public_events(self, username: str, per_page: int = 100):
         return self.request(f"https://api.github.com/users/{username}/events/public", {"per_page": per_page})
 
-    def list_repo_commits(self, username: str, repo_name: str, since: str | None = None, until: str | None = None):
+    def list_repo_commits(self, username: str, repo_name: str, since: str | None = None, until: str | None = None, author: str | None = None):
         params = {"per_page": 100}
         if since:
             params["since"] = since
         if until:
             params["until"] = until
+        if author:
+            params["author"] = author
         return self.request(f"https://api.github.com/repos/{username}/{repo_name}/commits", params)
+
+    def get_repo_languages(self, username: str, repo_name: str):
+        return self.request(f"https://api.github.com/repos/{username}/{repo_name}/languages")
+
+    def search_issues(self, query: str, per_page: int = 100):
+        return self.request("https://api.github.com/search/issues", {"q": query, "per_page": per_page})

@@ -5,6 +5,7 @@ ROOT = Path(__file__).resolve().parent
 DATA_DIR = ROOT / "data"
 DAILY_DIR = DATA_DIR / "daily"
 REPORTS_DIR = ROOT.parent / "reports"
+DASHBOARD_DIR = ROOT.parent / "dashboard"
 
 
 def ensure_dir(path: Path):
@@ -29,3 +30,8 @@ def write_report(date_label: str, markdown: str):
     latest_path = REPORTS_DIR / "latest.md"
     latest_path.write_text(f"# Latest report\n\n- Date: {date_label}\n- Path: reports/daily/{date_label}.md\n", encoding="utf-8")
     return report_path
+
+
+def write_dashboard_data(payload: dict):
+    ensure_dir(DASHBOARD_DIR)
+    write_json(DASHBOARD_DIR / "data.json", payload)

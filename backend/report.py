@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 
-def build_daily_markdown(date_label: str, summary: dict, repositories: list[dict], commits: list[dict] | None = None):
+def build_daily_markdown(date_label: str, summary: dict, repositories: list[dict], commits: list[dict] | None = None, timezone_name: str = "Asia/Kolkata"):
     repo_lines = []
     for repo in repositories:
         repo_name = repo.get("name", "unknown")
@@ -11,33 +11,43 @@ def build_daily_markdown(date_label: str, summary: dict, repositories: list[dict
     commit_lines = []
     for commit in commits or []:
         message = commit.get("message", "No message")
-        sha = commit.get("sha", "")[:7]
-        timestamp = commit.get("timestamp", "unknown")
+        sha = (commit.get("sha") or "")[:7]
+        timestamp = commit.get("committed_at") or commit.get("authored_at") or "unknown"
         repo_name = commit.get("repository", "unknown")
         commit_lines.append(f"- {repo_name}: {message} ({sha}) at {timestamp}\n")
 
+    summary_text = (
+        f"Commits: {summary.get('developer_commits', summary.get('commits', 0))}\n"
+        f"Repositories touched: {summary.get('repositories_touched', 0)}\n"
+        f"PRs: {summary.get('pull_requests', 0)}\n"
+        f"Issues: {summary.get('issues', 0)}\n"
+        f"Observed push events: {summary.get('observed_push_events', 'Unavailable')}\n"
+    )
+
+    if summary.get("developer_commits", 0) == 0:
+        summary_text += "NO COMMITS ON THIS DATE\n"
+
     markdown = f"""# Developer Genome Daily Report
 Date: {date_label}
-Timezone: Asia/Kolkata
+Timezone: {timezone_name}
 
 ## Summary
 
-Commits: {summary.get('commits', 0)}
-Repositories touched: {summary.get('repositories_touched', 0)}
-PRs: {summary.get('pull_requests', 0)}
-Issues: {summary.get('issues', 0)}
+{summary_text}
 
 ## Repositories
 
-{''.join(repo_lines) if repo_lines else 'No repository activity recorded.'}
+{''.join(repo_lines) if repo_lines else 'NO COMMITS ON THIS DATE - no qualifying developer commits were recorded.'}
 
 ## Commits
 
-{''.join(commit_lines) if commit_lines else 'No qualifying developer commits were recorded for this date.'}
+{''.join(commit_lines) if commit_lines else 'NO COMMITS ON THIS DATE. The system maintenance commit is excluded from personal activity and is shown separately as automation activity if present.'}
 
 ## Data Quality
 
-Push event history: Partial, depending on GitHub retention and API availability.
-System maintenance commit: Excluded from developer activity.
+- Commit collection: live GitHub API with since/until filtering and author filtering.
+- Push-event count: public events only when available; partial if GitHub retention limits access.
+- System automation: excluded from personal activity by repository and bot actor checks.
+- No silent sample-data fallback is used in production.
 """
     return markdown

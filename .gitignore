@@ -8,6 +8,7 @@ __pycache__/
 *.pyc
 .venv/
 .env
+.env.*
 
 # OS
 .DS_Store
@@ -15,5 +16,7 @@ Thumbs.db
 
 # Generated data
 backend/data/*.json
-!backend/data/sample_activity.json
-!backend/data/analytics_snapshot.json
+!backend/data/.gitkeep
+dashboard/data.json
+reports/*.md
+reports/daily/*.md
